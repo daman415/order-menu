@@ -7,58 +7,99 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+<h1 align="center">SISTEM ORDER MENU</h1>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Apa Itu Sistem Order Menu?
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Sistem Order ini dibuat oleh <a href="https://github.com/daman415"> Fathur Rahman </a>. **Sistem Order Menu adalah sebuah sistem yang digunakan untuk melakukan pemesanan makanan atau minuman pada cafee maupun pada tempat makan lainnya.**
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Fitur Sistem Order Menu
 
-## Learning Laravel
+- Membutuhkan Autentikasi Login
+- Menentukan Hak Akses User
+- CRUD Pada Data User
+- CRUD Pada Menu Makanan
+- CRUD Pada Pesanan
+- Terdapat Log Activity (Trigger Mysql)
+- dan lain-lain
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Role dan Hak Akses
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- Role [manager](#) dapat mengelola data [menu](#) dan melihat [rekapitulasi](#) data pesanan.
+- Role [pelayan](#) dapat membuat [orderan](#) baru, [pelayan](#) dapat melihat dan mencetak aktifitas pesanan miliknya saja.
+- Role [kasir](#) dapat memproses pesanan yang sudah dibuat.
+- Role [pelayan](#) maupun [kasir](#) dapat melihat dan mengubah pesanan yang masih aktif.
 
-## Laravel Sponsors
+## Default Account for testing
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+**Manager Role Manager**
 
-### Premium Partners
+---
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[CMS Max](https://www.cmsmax.com/)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
+- email: manager@mail.com
+- Password: manager123
 
-## Contributing
+---
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+**Pelayan Role Pelayan**
 
-## Code of Conduct
+---
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+- email: pelayan@mail.com
+- Password: pelayan123
 
-## Security Vulnerabilities
+---
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+- email: pelayan2@mail.com
+- Password: pelayan123
+
+---
+
+**Kasir Role Kasir**
+
+---
+
+- email: kasir@mail.com
+- Password: kasir123
+
+---
+
+
+## Install
+
+1. **Clone Repository**
+
+```bash
+$ git clone https://github.com/daman415/order-menu.git
+$ cd order-menu
+$ composer install
+$ cp .env.example .env
+```
+
+2. **Buka `.env` lalu isikan `DB_DATABASE` dengan nama `order`, sesuaikan `DB_USERNAME` dan `DB_PASSWORD` dengan pengaturan database masing-masing**
+
+```bash
+DB_PORT=3306
+DB_DATABASE=order
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+3. **Membuat Database baru dengan nama `order`**
+
+4. **Jalankan perintah `migrate` untuk membuat tabel pada Database, jangan lupa ditambah `--seed` agar data Default diimputkan kedalam Database**
+
+```bash
+$ php artisan migrate --seed `atau`
+$ php artisan migrate:fresh --seed
+```
+
+5. **Jalankan `php artisan serve` untuk menjalankan sistem**
+
+```bash
+$ php artisan serve
+```
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+- Copyright © 2021 Fathur Rahman.
