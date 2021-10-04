@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
+use App\Models\Log;
 use App\Models\Menu;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -47,13 +49,14 @@ class MenuController extends Controller
         ]);
 
 
-        Menu::create([
+        $tambah = Menu::create([
             'nama' => $request->get('nama'),
             'desc' => $request->get('desc'),
             'harga' => $request->get('harga'),
             'tipe' => $request->get('tipe')
         ]);
 
+        Log::records(Auth::user(),'tambah data menu','id menu = '.$tambah->id);
         return redirect('menu')->with('added_success', 'Data Berhasil Ditambahkan');
     }
 
@@ -106,7 +109,7 @@ class MenuController extends Controller
             'tipe' => $request->get('tipe')
         ]);
 
-
+        Log::records(Auth::user(),'ubah data menu','id menu = '.$id);
         return redirect('menu')->with('edit_success', 'Data Berhasil Diubah');
     }
 
@@ -124,13 +127,16 @@ class MenuController extends Controller
             $menu->update([
                 'status' => 1
             ]);
+            Log::records(Auth::user(),'ubah status menu','id menu = '.$id);
             return redirect('menu')->with('hapus_success', 'Data Ready');
         } elseif($menu->status == 1){
             $menu->update([
                 'status' => 0
             ]);
+            Log::records(Auth::user(),'ubah status menu','id menu = '.$id);
             return redirect('menu')->with('hapus_success', 'Data Kosong');
         }
+        
 
         
     }

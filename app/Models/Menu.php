@@ -19,12 +19,12 @@ class Menu extends Model
 
     public static function getMakanan()
     {
-        $makanan = Menu::where('tipe', 'makanan')->get();
+        $makanan = Menu::where('tipe', 'makanan')->orderBy('status','DESC')->orderBy('nama','ASC')->get();
         return $makanan;
     }
     public static function getMinumam()
     {
-        $makanan = Menu::where('tipe', 'minuman')->get();
+        $makanan = Menu::where('tipe', 'minuman')->orderBy('status','DESC')->orderBy('nama','ASC')->get();
         return $makanan;
     }
     public static function getMenu()

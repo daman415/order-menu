@@ -71,11 +71,11 @@
                                             cellspacing="0" width="100%" style="width:100%">
                                             <thead>
                                                 <tr>
-                                                    <th class="text-center"><input type="checkbox" id="chkpilihsemua">
+                                                    <th width="10%" class="text-center"><input type="checkbox" id="chkpilihsemua">
                                                     </th>
-                                                    <th class="text-center">Nama Menu</th>
-                                                    <th class="text-center">Harga</th>
-                                                    <th class="text-center">Jumlah</th>
+                                                    <th width="40%" class="">Nama Menu</th>
+                                                    <th width="40%" class="text-center">Harga</th>
+                                                    <th width="5%" class="text-center">Jumlah</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -83,7 +83,7 @@
                                                     <tr>
                                                         <td class="text-center"><input type="checkbox" name="itemsId[]"
                                                                 value="{{ $row->id }}"></td>
-                                                        <td class="text-center">{{ $row->nama }}</td>
+                                                        <td class="">{{ $row->nama }}</td>
                                                         <td class="text-center">{{ $row->harga }}</td>
                                                         <td class="text-center"><input type="number"
                                                                 name="jumlah[{{ $row->id }}]"></td>
@@ -100,8 +100,6 @@
                                 </div>
 
                                 <div class="form-footer text-right">
-                                    <a href="{{ route('pesanan.create') }}" type="button"
-                                        class="btn btn-secondary pull-left">Back</a>
                                     <button type="submit" class="btn btn-primary"> Order </button>
                                 </div>
                             </form>

@@ -56,7 +56,6 @@
                                     <thead>
                                         <tr>
                                             <th class="text-center">No</th>
-                                            <th class="text-center">Tipe</th>
                                             <th class="text-center">Nama</th>
                                             <th class="text-center">Harga</th>
                                             <th class="text-center">Deskripsi</th>
@@ -68,11 +67,10 @@
                                         @foreach ($makanan as $index => $row)
                                             <tr>
                                                 <td class="text-center">{{ $index + 1 }}</td>
-                                                <td class="text-center">{{ Str::ucfirst($row->tipe) }}</td>
                                                 <td class="text-center">{{ $row->nama }}</td>
                                                 <td class="text-center">{{ $row->harga }}</td>
                                                 <td class="text-center">{{ $row->desc }}</td>
-                                                <td class="text-center">{{ $row->status == 1 ? 'Ready' : 'Habis' }}
+                                                <td class="text-center {{$row->status == 1 ? 'bg-success' : 'bg-warning'}}">{{ $row->status == 1 ? 'Ready' : 'Habis' }}
                                                 </td>
                                                 <td class="text-center">
                                                     <a href="{{ route('menu.edit', $row->id) }}" type="button"
@@ -109,7 +107,6 @@
                                     <thead>
                                         <tr>
                                             <th class="text-center">No</th>
-                                            <th class="text-center">Tipe</th>
                                             <th class="text-center">Nama</th>
                                             <th class="text-center">Harga</th>
                                             <th class="text-center">Deskripsi</th>
@@ -121,11 +118,10 @@
                                         @foreach ($minuman as $index => $row)
                                             <tr>
                                                 <td class="text-center">{{ $index + 1 }}</td>
-                                                <td class="text-center">{{ Str::ucfirst($row->tipe) }}</td>
                                                 <td class="text-center">{{ $row->nama }}</td>
                                                 <td class="text-center">{{ $row->harga }}</td>
                                                 <td class="text-center">{{ $row->desc }}</td>
-                                                <td class="text-center">{{ $row->status == 1 ? 'Ready' : 'Habis' }}
+                                                <td class="text-center {{$row->status == 1 ? 'bg-success' : 'bg-warning'}}">{{ $row->status == 1 ? 'Ready' : 'Habis' }}
                                                 </td>
                                                 <td class="text-center">
                                                     <a href="{{ route('menu.edit', $row->id) }}" type="button"

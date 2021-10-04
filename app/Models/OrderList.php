@@ -17,4 +17,9 @@ class OrderList extends Model
     public function menu(){
         return $this->belongsTo(Menu::class);
     }
+
+    public static function getHarga()
+    {
+        OrderList::all();
+    }
 }

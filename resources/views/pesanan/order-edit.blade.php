@@ -60,7 +60,7 @@
                                                         <td class="text-center">{{ $row->nama }}</td>
                                                         <td class="text-center">{{ $row->harga }}</td>
                                                         <td class="text-center"><input type="number"
-                                                                name="jumlah[{{ $row->id }}]" value="{{$pesanan->jumlah}}"></td>
+                                                                name="jumlah[{{ $row->id }}]" value="{{$row->jumlah}}"></td>
                                                         
                                                     </tr>
                                                     <td class="text-center"><input type="hidden"
@@ -74,7 +74,7 @@
                                 </div>
 
                                 <div class="form-footer text-right">
-                                    <a href="{{ route('pesanan.create') }}" type="button"
+                                    <a href="{{ route('pesanan.index') }}" type="button"
                                         class="btn btn-secondary pull-left">Back</a>
                                     <button type="submit" class="btn btn-primary"> Order </button>
                                 </div>

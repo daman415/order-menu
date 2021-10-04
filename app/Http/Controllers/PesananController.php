@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Log;
 use App\Models\Menu;
 use App\Models\OrderList;
 use App\Models\Pesanan;
@@ -19,11 +20,13 @@ class PesananController extends Controller
     public function index()
     {
         $pesanan = Pesanan::getPesanan();
+        // Pesanan::log();
         return view('pesanan.pesanan', compact('pesanan'));
     }
     public function rekap()
     {
         $rekap = Pesanan::getRekap();
+        Log::records(Auth::user(),'access rekap menu','rekap menu');
         return view('pesanan.rekap', compact('rekap'));
     }
 
@@ -100,6 +103,8 @@ class PesananController extends Controller
                 'total_harga' => $total_harga,
             ]);
 
+            Log::records(Auth::user(),'menambahkan orderan','id order = '.$pesananId);
+
             return redirect('pesanan')->with('added_success', 'Pesanan Berhasil diproses');
         }
     }
@@ -125,7 +130,11 @@ class PesananController extends Controller
     {
         $pesanan = Pesanan::findOrFail($id);
         $menu = Menu::all();
-        return view('pesanan.order-edit', compact('pesanan', 'menu'));
+
+        $order = OrderList::join('menus', 'order_lists.menu_id','=','menus.id')->where('pesanan_id',$id)
+            ->select('menus.*','order_lists.jumlah')->get();
+
+        return view('pesanan.order-edit', compact('order', 'menu', 'pesanan'));
     }
 
     /**
@@ -178,6 +187,7 @@ class PesananController extends Controller
             'total_harga' => $total_harga,
         ]);
 
+        Log::records(Auth::user(),'mengubah orderan','id order = '.$pesananId);
         return redirect('pesanan')->with('added_success', 'Pesanan Berhasil diproses');
     }
 
@@ -193,6 +203,8 @@ class PesananController extends Controller
         $pesanan->update([
             'status' => 1
         ]);
+
+        Log::records(Auth::user(),'menyelesaikan orderan','id order = '.$id);
         return redirect('pesanan')->with('hapus_success', 'Pesenan Selesai');
     }
 }

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
+use App\Models\Log;
 use App\Models\OrderList;
 use Illuminate\Http\Request;
 
